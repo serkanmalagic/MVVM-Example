@@ -15,8 +15,10 @@ class ViewController: UIViewController {
     
     var userViewModel : UserViewModel! {
         didSet{
-            view.backgroundColor = userViewModel.user.backgroundColor
-            navigationItem.title = userViewModel.user.name
+            UIView.transition(with: self.view, duration: 0.4, options: .transitionCrossDissolve, animations: {
+                self.navigationItem.title = self.userViewModel.user.name
+                self.view.backgroundColor = self.userViewModel.user.backgroundColor
+            })
         }
     }
     
