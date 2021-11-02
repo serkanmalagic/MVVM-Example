@@ -10,10 +10,5 @@ import UIKit
 
 class User {
     let name : String
-    let backgroundColor : UIColor
     
-    internal init(name: String, backgroundColor: UIColor) {
-        self.name = name
-        self.backgroundColor = backgroundColor
-    }
 }

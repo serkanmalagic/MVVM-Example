@@ -9,42 +9,36 @@ import UIKit
 import Alamofire
 import SCLAlertView
 
-class ViewController: UIViewController {
+//  RoadMap - Observable -> Model -> ViewModel -> Controller
+
+//  Observable viewmodel binding işlemleri
+class Observable<T> {
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
-    var userViewModel : UserViewModel! {
+    //  T-Type'lar optional olarak tanımlanır. Viewmodel tanımlandığında başlangıç değeri nil olabilir.
+    var value : T? {
         didSet{
-            UIView.transition(with: self.view, duration: 0.4, options: .transitionCrossDissolve, animations: {
-                self.navigationItem.title = self.userViewModel.user.name
-                self.view.backgroundColor = self.userViewModel.user.backgroundColor
-            })
+            listener?(value)
         }
     }
+    
+    init(_ value : T?){
+        self.value = value
+    }
+    private var listener : ((T?) -> Void)?
+    
+    func bind(_ listener: ( @escaping (T?) -> Void)){
+        listener(value)
+        self.listener = listener
+    }
+}
+
+class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    @IBAction func setViewModel(_ sender: Any) {
-        switch segmentedControl.selectedSegmentIndex
-        {
-        case 0:
-            createUser(.red, "Serkan red")
-        case 1:
-            createUser(.green, "Serkan green")
-        case 2:
-            createUser(.blue, "Serkan blue")
-        default:
-            break
-        }
-    }
-    
-    func createUser(_ color : UIColor , _ title : String){
-        let user = User(name: title, backgroundColor: color)
-        userViewModel = UserViewModel(user: user)
-    }
     
 }
 
