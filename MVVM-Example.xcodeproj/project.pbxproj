@@ -18,6 +18,9 @@
 		F840D946272D67F9000C513B /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F840D944272D67F9000C513B /* ApiRouter.swift */; };
 		F840D953272D69C4000C513B /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F840D952272D69C4000C513B /* UserViewModel.swift */; };
 		F840D955272D6D76000C513B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F840D954272D6D76000C513B /* User.swift */; };
+		F87AC10227333E7100B51C94 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC10127333E7100B51C94 /* MainViewController.swift */; };
+		F87AC10427333F0500B51C94 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC10327333F0500B51C94 /* Comment.swift */; };
+		F87AC1062733400900B51C94 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC1052733400900B51C94 /* CommentViewModel.swift */; };
 		F8FF74DD272D66570019CB49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FF74DC272D66570019CB49 /* SceneDelegate.swift */; };
 		F8FF74E2272D66570019CB49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8FF74E0272D66570019CB49 /* Main.storyboard */; };
 		F8FF74E4272D66590019CB49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8FF74E3272D66590019CB49 /* Assets.xcassets */; };
@@ -38,6 +41,9 @@
 		F840D944272D67F9000C513B /* ApiRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
 		F840D952272D69C4000C513B /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		F840D954272D6D76000C513B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F87AC10127333E7100B51C94 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F87AC10327333F0500B51C94 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		F87AC1052733400900B51C94 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		F8FF74D7272D66570019CB49 /* MVVM-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FF74DC272D66570019CB49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F8FF74E1272D66570019CB49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				F840D92E272D6773000C513B /* ViewController.swift */,
+				F87AC10127333E7100B51C94 /* MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -96,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				F840D954272D6D76000C513B /* User.swift */,
+				F87AC10327333F0500B51C94 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -130,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				F840D952272D69C4000C513B /* UserViewModel.swift */,
+				F87AC1052733400900B51C94 /* CommentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -289,13 +298,16 @@
 				F840D93B272D67D2000C513B /* AppDelegate.swift in Sources */,
 				F840D946272D67F9000C513B /* ApiRouter.swift in Sources */,
 				F840D942272D67EC000C513B /* KeyChainHelper.swift in Sources */,
+				F87AC10227333E7100B51C94 /* MainViewController.swift in Sources */,
 				F840D931272D6773000C513B /* ViewController.swift in Sources */,
 				F840D945272D67F9000C513B /* NetworkClient.swift in Sources */,
 				F840D953272D69C4000C513B /* UserViewModel.swift in Sources */,
 				F8FF74DD272D66570019CB49 /* SceneDelegate.swift in Sources */,
+				F87AC10427333F0500B51C94 /* Comment.swift in Sources */,
 				F840D93C272D67D2000C513B /* AppAppearance.swift in Sources */,
 				F840D93F272D67E5000C513B /* Extension.swift in Sources */,
 				F840D940272D67E5000C513B /* Constants.swift in Sources */,
+				F87AC1062733400900B51C94 /* CommentViewModel.swift in Sources */,
 				F840D955272D6D76000C513B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
