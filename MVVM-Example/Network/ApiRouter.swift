@@ -26,7 +26,8 @@ enum APIRouter: URLRequestConvertible {
     case getPost(id: String)
     case getPostsComments(id : String)
     case getUsers
-
+    case getAlbums
+    
     var method: HTTPMethod {
         switch self {
         case .getTodoLists:
@@ -41,104 +42,116 @@ enum APIRouter: URLRequestConvertible {
             return .post
         case .getUsers:
             return .get
+        case .getAlbums:
+            return .get
         }
-    }
+        
     
-    var path: String {
-        switch self {
-        case .getTodoLists:
-            return "list.php"
-        case .getPosts:
-            return "posts"
-        case .getPost(let id):
-            return "posts/\(id)"
-        case .getPostsComments(let id):
-            return "posts/\(id)/comments"
-        case .addToDo(_, _):
-            return "add.php"
-        case .getUsers:
-            return "users"
-        }
-    }
-    
-    var parameters: Parameters? {
-        switch self {
-        case .getTodoLists:
-            return nil
-        case .getPosts:
-            return nil
-        case .getPost:
-            return nil
-        case .getPostsComments:
-            return nil
-        case .addToDo(let title, let description):
-            return ["title": title, "desc": description]
-        case .getUsers:
-            return nil
-        }
-    }
-    
-    // this is for authentication, allow all, and maybe disable for some
-    var AuthRequired: Bool {
-        switch self {
-        case .getTodoLists:
-            return false
-        case .getPosts:
-            return false
-        case .getPost:
-            return false
-        case .getPostsComments:
-            return false
-        case .getUsers:
-            return false
-        default:
-            return true
-        }
-    }
-    // encoding, either URL (normal url query) or a JSON body..
-    var encoding: ParameterEncoding {
-        switch self {
-        case .getTodoLists:
-            return JSONEncoding.default
-        case .getPosts:
-            return JSONEncoding.default
-        case .getPost:
-            return JSONEncoding.default
-        case .getPostsComments:
-            return JSONEncoding.default
-        case .getUsers:
-            return JSONEncoding.default
-        default:
-            return URLEncoding.default
+}
 
-        }
+var path: String {
+    switch self {
+    case .getTodoLists:
+        return "list.php"
+    case .getPosts:
+        return "posts"
+    case .getPost(let id):
+        return "posts/\(id)"
+    case .getPostsComments(let id):
+        return "posts/\(id)/comments"
+    case .addToDo(_, _):
+        return "add.php"
+    case .getUsers:
+        return "users"
+    case .getAlbums:
+        return "albums"
     }
+}
 
+var parameters: Parameters? {
+    switch self {
+    case .getTodoLists:
+        return nil
+    case .getPosts:
+        return nil
+    case .getPost:
+        return nil
+    case .getPostsComments:
+        return nil
+    case .addToDo(let title, let description):
+        return ["title": title, "desc": description]
+    case .getUsers:
+        return nil
+    case .getAlbums:
+        return nil
+    }
+}
+
+// this is for authentication, allow all, and maybe disable for some
+var AuthRequired: Bool {
+    switch self {
+    case .getTodoLists:
+        return false
+    case .getPosts:
+        return false
+    case .getPost:
+        return false
+    case .getPostsComments:
+        return false
+    case .getUsers:
+        return false
+    case .getAlbums:
+        return false
+    default:
+        return true
+    }
+}
+// encoding, either URL (normal url query) or a JSON body..
+var encoding: ParameterEncoding {
+    switch self {
+    case .getTodoLists:
+        return JSONEncoding.default
+    case .getPosts:
+        return JSONEncoding.default
+    case .getPost:
+        return JSONEncoding.default
+    case .getPostsComments:
+        return JSONEncoding.default
+    case .getUsers:
+        return JSONEncoding.default
+    case .getAlbums:
+        return JSONEncoding.default
+    default:
+        return URLEncoding.default
+        
+    }
+}
+
+
+func asURLRequest() throws -> URLRequest {
+    let url = try Constants.baseURL.asURL().appendingPathComponent(path)
     
-    func asURLRequest() throws -> URLRequest {
-        let url = try Constants.baseURL.asURL().appendingPathComponent(path)
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
-        
-        // Common Headers
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-        
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
-        
-        if(AuthRequired){
-            if(AuthManager.loggedIn) {
-                request.setValue(AuthManager.authKey(), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
-            }
+    var request = URLRequest(url: url)
+    request.httpMethod = method.rawValue
+    
+    // Common Headers
+    request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+    
+    request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+    
+    if(AuthRequired){
+        if(AuthManager.loggedIn) {
+            request.setValue(AuthManager.authKey(), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
         }
-        
-        if let parameters = parameters {
-            return try encoding.encode(request, with: parameters)
-            
-        }
-        
-        return request
     }
     
+    if let parameters = parameters {
+        return try encoding.encode(request, with: parameters)
+        
+    }
     
+    return request
+}
+
+
 }

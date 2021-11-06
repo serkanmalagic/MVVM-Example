@@ -13,7 +13,7 @@ struct NetworkClient {
     
     typealias onSuccess<T> = ((T) -> ())
     typealias onFailure = ( (_ error: Error) -> ())
-   
+    
     // object parameter is added here so the T generic param can infer the type
     // All objects must conform to "Decodable" protocol
     static func performRequest<T>(vc : UIViewController ,object: T.Type, router: APIRouter, success: @escaping onSuccess<T>, failure: @escaping onFailure) where T: Decodable{

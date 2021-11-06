@@ -9,17 +9,39 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    var commentViewModel : CommentViewModel!
+    private let tableView : UITableView = {
+        let table = UITableView()
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return table
+    }()
     
-    @IBOutlet weak var tableView: UITableView!
+    private var albumViewModel = AlbumViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        commentViewModel.loadComments(vc: self) {
-            print(commentViewModel.comments)
+        
+        view.addSubview(tableView)
+        tableView.frame = view.bounds
+        tableView.dataSource = self
+        
+        
+        albumViewModel.albums.bind { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
         
+        fetchData()
+    }
+    
+    func fetchData (){
+        NetworkClient.performRequest(vc: self, object: [Album].self, router: APIRouter.getAlbums, success : { result in
+            
+            self.albumViewModel.albums.value = result
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
 
 }
@@ -29,14 +51,14 @@ extension MainViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
         
-        cell.textLabel?.text = commentViewModel.comments?[indexPath.row].body
+        cell.textLabel?.text = albumViewModel.albums.value?[indexPath.row].title
         cell.textLabel?.numberOfLines = 0
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commentViewModel.numberOfRowsInSectionCount()
+        return albumViewModel.albums.value?.count ?? 0
     }
     
 }
