@@ -9,31 +9,7 @@ import UIKit
 import Alamofire
 import SCLAlertView
 
-//  RoadMap - Observable -> Model -> ViewModel -> Controller
-
-//  Observable viewmodel binding işlemleri
-class Observable<T> {
-    
-    //  T-Type'lar optional olarak tanımlanır. Viewmodel tanımlandığında başlangıç değeri nil olabilir.
-    var value : T? {
-        didSet{
-            listener?(value)
-        }
-    }
-    
-    init(_ value : T?){
-        self.value = value
-    }
-    private var listener : ((T?) -> Void)?
-    
-    func bind(_ listener: ( @escaping (T?) -> Void)){
-        listener(value)
-        self.listener = listener
-    }
-}
-
 struct UserListViewModel {
-    //  Genericlerle çalışıyorsanırz açılı brackets kullanmayı unutmayın
     var users: Observable<[UserTableViewCellViewModel]> = Observable([])
 }
 
@@ -60,7 +36,6 @@ class ViewController: UIViewController {
         tableView.frame = view.bounds
         tableView.dataSource = self
         
-        //  Değer apiden çağırıldığında değişime uğradığında listener değeri bekler ve değiştiği anda tableView reload edilir
         viewModel.users.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -81,10 +56,8 @@ class ViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-    
 }
 
-//  Muhatapımız sadece viewmodel olacak
 extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,6 +67,7 @@ extension ViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = viewModel.users.value?[indexPath.row].name
+        cell.textLabel?.font = UIFont(name: "Helvetica", size: 25)
         return cell
     }
 }

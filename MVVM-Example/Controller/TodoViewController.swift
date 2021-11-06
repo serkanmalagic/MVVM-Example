@@ -42,9 +42,9 @@ extension TodoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
-        
-        cell.textLabel?.text = "\(todoViewModel.todos.value?[indexPath.row].id)"
-        
+        cell.textLabel?.text = todoViewModel.todos.value?[indexPath.row].title
+        cell.textLabel?.font = UIFont(name: "Helvetica", size: 15)
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
     

@@ -24,7 +24,6 @@ class MainViewController: UIViewController {
         tableView.frame = view.bounds
         tableView.dataSource = self
         
-        
         albumViewModel.albums.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -52,8 +51,8 @@ extension MainViewController : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
         
         cell.textLabel?.text = albumViewModel.albums.value?[indexPath.row].title
-        cell.textLabel?.numberOfLines = 0
-        
+        cell.textLabel?.font = UIFont(name: "Helvetica", size: 25)
+
         return cell
     }
     
