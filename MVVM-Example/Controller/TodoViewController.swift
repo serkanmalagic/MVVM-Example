@@ -15,6 +15,9 @@ class TodoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.largeTitleDisplayMode = .always
+
 
         tableView.delegate = self
         tableView.dataSource = self

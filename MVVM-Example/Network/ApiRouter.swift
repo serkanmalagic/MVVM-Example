@@ -28,6 +28,7 @@ enum APIRouter: URLRequestConvertible {
     case getUsers
     case getAlbums
     case getTodos
+    case getTodo(id:String)
     
     var method: HTTPMethod {
         switch self {
@@ -46,6 +47,8 @@ enum APIRouter: URLRequestConvertible {
         case .getAlbums:
             return .get
         case .getTodos:
+            return .get
+        case .getTodo(_):
             return .get
         }
     
@@ -69,6 +72,8 @@ var path: String {
         return "albums"
     case .getTodos:
         return "todos"
+    case .getTodo(let id):
+        return "todos\(id)"
     }
 }
 
@@ -90,6 +95,8 @@ var parameters: Parameters? {
         return nil
     case .getTodos:
         return nil
+    case .getTodo:
+        return nil
     }
 }
 
@@ -109,6 +116,8 @@ var AuthRequired: Bool {
     case .getAlbums:
         return false
     case .getTodos:
+        return false
+    case .getTodo:
         return false
     default:
         return true
@@ -130,6 +139,8 @@ var encoding: ParameterEncoding {
     case .getAlbums:
         return JSONEncoding.default
     case .getTodos:
+        return JSONEncoding.default
+    case .getTodo:
         return JSONEncoding.default
     default:
         return URLEncoding.default
