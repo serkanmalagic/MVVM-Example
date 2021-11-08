@@ -10,6 +10,6 @@ import Foundation
 
 class TodoViewModel {
     
-    var todos: Observable<[Todo]> = Observable([])
+    var todos: Observable<[String]> = Observable([])
 
 }

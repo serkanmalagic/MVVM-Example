@@ -8,17 +8,17 @@
 import UIKit
 
 class TodoViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var todoViewModel = TodoViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .always
-
-
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -32,11 +32,29 @@ class TodoViewController: UIViewController {
         
     }
     
+    @IBAction func bindingTriggerTapped(_ sender: Any) {
+        fetchItems()
+    }
+    
     func fetchItems(){
-        NetworkClient.performRequest(vc: self, object: [Todo].self, router: APIRouter.getTodos) { result in
-            self.todoViewModel.todos.value = result
-        } failure: { error in
-            print(error.localizedDescription)
+        
+        var strArr = [String]()
+        for _ in 0 ..< 10 { strArr.append(Lorem.sentences(2)) }
+        self.todoViewModel.todos.value = strArr
+        print("çalıştım")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            var strArr = [String]()
+            for _ in 0 ..< 40 { strArr.append(Lorem.paragraphs(1)) }
+            self.todoViewModel.todos.value = strArr
+            print("çalıştım")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                var strArr = [String]()
+                for _ in 0 ..< 100 { strArr.append(Lorem.tweet) }
+                self.todoViewModel.todos.value = strArr
+                print("çalıştım")
+            }
         }
     }
 }
@@ -45,7 +63,7 @@ extension TodoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
-        cell.textLabel?.text = todoViewModel.todos.value?[indexPath.row].title
+        cell.textLabel?.text = todoViewModel.todos.value?[indexPath.row]
         cell.textLabel?.font = UIFont(name: "Helvetica", size: 15)
         cell.textLabel?.numberOfLines = 0
         return cell

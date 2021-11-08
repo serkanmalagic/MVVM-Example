@@ -22,6 +22,7 @@
 		F87AC10227333E7100B51C94 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC10127333E7100B51C94 /* MainViewController.swift */; };
 		F87AC10427333F0500B51C94 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC10327333F0500B51C94 /* Comment.swift */; };
 		F87AC1062733400900B51C94 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC1052733400900B51C94 /* AlbumViewModel.swift */; };
+		F8B3D6FE27395538006E3990 /* LoremSwiftum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B3D6FD27395537006E3990 /* LoremSwiftum.swift */; };
 		F8C4F6792737226E00BB7F4B /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4F6782737226E00BB7F4B /* TodoViewModel.swift */; };
 		F8C4F67B2737228C00BB7F4B /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4F67A2737228C00BB7F4B /* TodoModel.swift */; };
 		F8C4F67D273722A800BB7F4B /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4F67C273722A800BB7F4B /* TodoViewController.swift */; };
@@ -50,6 +51,7 @@
 		F87AC10127333E7100B51C94 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F87AC10327333F0500B51C94 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F87AC1052733400900B51C94 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		F8B3D6FD27395537006E3990 /* LoremSwiftum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremSwiftum.swift; sourceTree = "<group>"; };
 		F8C4F6782737226E00BB7F4B /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		F8C4F67A2737228C00BB7F4B /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 		F8C4F67C273722A800BB7F4B /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				F840D93E272D67E5000C513B /* Constants.swift */,
 				F8C4F67E27372C8900BB7F4B /* Observable.swift */,
 				F840D93D272D67E5000C513B /* Extension.swift */,
+				F8B3D6FD27395537006E3990 /* LoremSwiftum.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				F8C4F67F27372C8900BB7F4B /* Observable.swift in Sources */,
 				F840D93B272D67D2000C513B /* AppDelegate.swift in Sources */,
 				F840D946272D67F9000C513B /* ApiRouter.swift in Sources */,
+				F8B3D6FE27395538006E3990 /* LoremSwiftum.swift in Sources */,
 				F840D942272D67EC000C513B /* KeyChainHelper.swift in Sources */,
 				F8C4F67B2737228C00BB7F4B /* TodoModel.swift in Sources */,
 				F87AC10227333E7100B51C94 /* MainViewController.swift in Sources */,
@@ -478,6 +482,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V3GG7DUK6Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MVVM-Example/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -506,6 +511,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V3GG7DUK6Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MVVM-Example/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

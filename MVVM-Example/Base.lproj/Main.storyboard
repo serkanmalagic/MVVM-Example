@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PMs-xe-39t">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="193" width="375" height="474"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="8AR-0y-9TE">
@@ -81,14 +81,50 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJR-yu-T8q">
+                                <rect key="frame" x="8" y="52" width="359" height="94"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift MVVM Binding model her değiştikçe tabloyu yeniler" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RT-rP-vri">
+                                        <rect key="frame" x="32" y="15" width="295" height="64"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstItem="2RT-rP-vri" firstAttribute="leading" secondItem="GJR-yu-T8q" secondAttribute="leading" constant="32" id="Ibi-At-soR"/>
+                                    <constraint firstAttribute="trailing" secondItem="2RT-rP-vri" secondAttribute="trailing" constant="32" id="XlX-6t-rPE"/>
+                                    <constraint firstItem="2RT-rP-vri" firstAttribute="top" secondItem="GJR-yu-T8q" secondAttribute="top" constant="15" id="lva-Sj-lCx"/>
+                                    <constraint firstAttribute="bottom" secondItem="2RT-rP-vri" secondAttribute="bottom" constant="15" id="oqc-0p-eJk"/>
+                                    <constraint firstAttribute="height" constant="94" id="var-sv-daw"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8P-Uv-ajL">
+                                <rect key="frame" x="8" y="154" width="359" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="6vN-OF-b3F"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="2 Saniyede bir binding tetikle"/>
+                                <connections>
+                                    <action selector="bindingTriggerTapped:" destination="eM8-5n-ZNp" eventType="touchUpInside" id="p1z-r6-yAQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yQY-Pf-yA6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PMs-xe-39t" firstAttribute="bottom" secondItem="yQY-Pf-yA6" secondAttribute="bottom" id="0T0-OM-R04"/>
-                            <constraint firstItem="PMs-xe-39t" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" id="Kdk-KD-Dzk"/>
-                            <constraint firstItem="PMs-xe-39t" firstAttribute="top" secondItem="yQY-Pf-yA6" secondAttribute="top" id="LYa-iK-oB1"/>
-                            <constraint firstItem="PMs-xe-39t" firstAttribute="trailing" secondItem="yQY-Pf-yA6" secondAttribute="trailing" id="mIE-8C-EYA"/>
+                            <constraint firstItem="PMs-xe-39t" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" id="12c-yW-Q8K"/>
+                            <constraint firstItem="Q8P-Uv-ajL" firstAttribute="top" secondItem="GJR-yu-T8q" secondAttribute="bottom" constant="8" symbolic="YES" id="44G-FK-nTp"/>
+                            <constraint firstItem="GJR-yu-T8q" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" constant="8" id="8oL-mi-0kl"/>
+                            <constraint firstItem="PMs-xe-39t" firstAttribute="bottom" secondItem="yQY-Pf-yA6" secondAttribute="bottom" id="AxM-ca-pnz"/>
+                            <constraint firstItem="Q8P-Uv-ajL" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" constant="8" id="EnH-WR-1dO"/>
+                            <constraint firstItem="yQY-Pf-yA6" firstAttribute="trailing" secondItem="Q8P-Uv-ajL" secondAttribute="trailing" constant="8" id="KEg-M8-hqi"/>
+                            <constraint firstItem="PMs-xe-39t" firstAttribute="trailing" secondItem="yQY-Pf-yA6" secondAttribute="trailing" id="Xcp-tE-fxr"/>
+                            <constraint firstItem="GJR-yu-T8q" firstAttribute="top" secondItem="yQY-Pf-yA6" secondAttribute="top" constant="8" id="bXn-LW-lk7"/>
+                            <constraint firstItem="yQY-Pf-yA6" firstAttribute="trailing" secondItem="GJR-yu-T8q" secondAttribute="trailing" constant="8" id="iAy-uB-oNv"/>
+                            <constraint firstItem="PMs-xe-39t" firstAttribute="top" secondItem="Q8P-Uv-ajL" secondAttribute="bottom" constant="8" symbolic="YES" id="l9r-Uo-i04"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Todos" id="IbZ-TY-ctF"/>
@@ -143,6 +179,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
