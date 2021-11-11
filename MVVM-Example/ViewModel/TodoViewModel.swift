@@ -6,10 +6,20 @@
 //
 
 import Foundation
+import UIKit
 
-
-class TodoViewModel {
+struct TodoViewModel {
     
-    var todos: Observable<[String]> = Observable([])
-
+    var todos = [Todo]()
+    
+    var backgroundColor : UIColor {
+        return UIColor.random
+    }
+    var navigationTitle : String {
+        return Lorem.firstName
+    }
+    var loadingIndicator : Bool {
+        return false
+    }
+    
 }
