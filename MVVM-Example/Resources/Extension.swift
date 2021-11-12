@@ -21,7 +21,7 @@ extension UIView{
     func createSpinner(x: CGFloat, y: CGFloat) -> NVActivityIndicatorView{
         var activityView : NVActivityIndicatorView!
         if activityView == nil{
-            activityView = NVActivityIndicatorView(frame: CGRect(x: x, y: y, width: 50, height: 50), type: NVActivityIndicatorType.lineSpinFadeLoader, color: UIColor.lightGray, padding: 0.0)
+            activityView = NVActivityIndicatorView(frame: CGRect(x: x, y: y, width: 50, height: 50), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.darkGray, padding: 0.0)
             self.addSubview(activityView)
         }
         return activityView

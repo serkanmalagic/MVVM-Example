@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PMs-xe-39t">
-                                <rect key="frame" x="16" y="264" width="343" height="387"/>
+                                <rect key="frame" x="16" y="338" width="343" height="313"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="8AR-0y-9TE">
@@ -101,43 +101,57 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8P-Uv-ajL">
-                                <rect key="frame" x="16" y="170" width="343" height="31"/>
+                                <rect key="frame" x="16" y="170" width="343" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="6vN-OF-b3F"/>
+                                    <constraint firstAttribute="height" constant="40" id="6vN-OF-b3F"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Setup Bindings"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Start Triggered Indicator"/>
                                 <connections>
-                                    <action selector="btnTapped:" destination="eM8-5n-ZNp" eventType="touchUpInside" id="egg-5x-wYM"/>
+                                    <action selector="btnTapped:" destination="eM8-5n-ZNp" eventType="touchUpInside" id="nAc-3z-m2c"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgj-gk-yc3">
-                                <rect key="frame" x="16" y="217" width="343" height="31"/>
+                                <rect key="frame" x="16" y="226" width="343" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="eRN-17-nEN"/>
+                                    <constraint firstAttribute="height" constant="40" id="eRN-17-nEN"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Trigger ViewModel"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Stop Triggered Indicator"/>
                                 <connections>
-                                    <action selector="triggerViewModelBtnTapped:" destination="eM8-5n-ZNp" eventType="touchUpInside" id="fUV-Rk-5Gf"/>
+                                    <action selector="triggerViewModelBtnTapped:" destination="eM8-5n-ZNp" eventType="touchUpInside" id="aKm-Mv-mFM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keZ-jR-7P5">
+                                <rect key="frame" x="16" y="282" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Pna-Ep-INZ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Update ViewModel"/>
+                                <connections>
+                                    <action selector="updateVMBtnTapped:" destination="eM8-5n-ZNp" eventType="touchUpInside" id="HIT-OL-56D"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yQY-Pf-yA6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PMs-xe-39t" firstAttribute="top" secondItem="fgj-gk-yc3" secondAttribute="bottom" constant="16" id="04y-8b-kdq"/>
                             <constraint firstItem="Q8P-Uv-ajL" firstAttribute="top" secondItem="GJR-yu-T8q" secondAttribute="bottom" constant="16" id="44G-FK-nTp"/>
+                            <constraint firstItem="yQY-Pf-yA6" firstAttribute="trailing" secondItem="PMs-xe-39t" secondAttribute="trailing" constant="16" id="4PV-cb-zdx"/>
+                            <constraint firstItem="PMs-xe-39t" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" constant="16" id="5XH-4e-YZc"/>
                             <constraint firstItem="fgj-gk-yc3" firstAttribute="top" secondItem="Q8P-Uv-ajL" secondAttribute="bottom" constant="16" id="7mH-iA-QHF"/>
                             <constraint firstItem="GJR-yu-T8q" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" constant="16" id="8oL-mi-0kl"/>
                             <constraint firstItem="Q8P-Uv-ajL" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" constant="16" id="EnH-WR-1dO"/>
                             <constraint firstItem="yQY-Pf-yA6" firstAttribute="trailing" secondItem="Q8P-Uv-ajL" secondAttribute="trailing" constant="16" id="KEg-M8-hqi"/>
+                            <constraint firstItem="yQY-Pf-yA6" firstAttribute="bottom" secondItem="PMs-xe-39t" secondAttribute="bottom" constant="16" id="NU5-Xz-ko1"/>
                             <constraint firstItem="fgj-gk-yc3" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" constant="16" id="Wle-If-WTQ"/>
-                            <constraint firstItem="yQY-Pf-yA6" firstAttribute="trailing" secondItem="PMs-xe-39t" secondAttribute="trailing" constant="16" id="ZlT-xq-Ewg"/>
+                            <constraint firstItem="yQY-Pf-yA6" firstAttribute="trailing" secondItem="keZ-jR-7P5" secondAttribute="trailing" constant="16" id="XRo-ZT-91S"/>
                             <constraint firstItem="GJR-yu-T8q" firstAttribute="top" secondItem="yQY-Pf-yA6" secondAttribute="top" constant="16" id="bXn-LW-lk7"/>
+                            <constraint firstItem="keZ-jR-7P5" firstAttribute="top" secondItem="fgj-gk-yc3" secondAttribute="bottom" constant="16" id="eCy-k6-YCJ"/>
                             <constraint firstItem="yQY-Pf-yA6" firstAttribute="trailing" secondItem="GJR-yu-T8q" secondAttribute="trailing" constant="16" id="iAy-uB-oNv"/>
-                            <constraint firstItem="yQY-Pf-yA6" firstAttribute="bottom" secondItem="PMs-xe-39t" secondAttribute="bottom" constant="16" id="izQ-lv-K78"/>
-                            <constraint firstItem="PMs-xe-39t" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" constant="16" id="mLK-Pu-7ie"/>
+                            <constraint firstItem="PMs-xe-39t" firstAttribute="top" secondItem="keZ-jR-7P5" secondAttribute="bottom" constant="16" id="iZd-5Z-fgK"/>
+                            <constraint firstItem="keZ-jR-7P5" firstAttribute="leading" secondItem="yQY-Pf-yA6" secondAttribute="leading" constant="16" id="wzR-9w-Arm"/>
                             <constraint firstItem="yQY-Pf-yA6" firstAttribute="trailing" secondItem="fgj-gk-yc3" secondAttribute="trailing" constant="16" id="ya3-Fd-cRD"/>
                         </constraints>
                     </view>
@@ -146,7 +160,7 @@
                         <outlet property="headerLabel" destination="2RT-rP-vri" id="vS1-W6-uKB"/>
                         <outlet property="headerView" destination="GJR-yu-T8q" id="WkG-Cf-dct"/>
                         <outlet property="tableView" destination="PMs-xe-39t" id="5Az-Bw-Dxv"/>
-                        <outlet property="triggerViewModelBtn" destination="fgj-gk-yc3" id="OGv-Po-Wn2"/>
+                        <outlet property="updateVMBtn" destination="keZ-jR-7P5" id="SUb-wY-faM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctA-1b-Etq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

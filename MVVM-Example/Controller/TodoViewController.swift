@@ -15,7 +15,7 @@ class TodoViewController: UIViewController {
     
     private var todoViewModel = TodoViewModel()
 
-    @IBOutlet weak var triggerViewModelBtn: UIButton!
+    @IBOutlet weak var updateVMBtn: UIButton!
     
     @IBOutlet weak var headerLabel: UILabel!
     
@@ -33,17 +33,21 @@ class TodoViewController: UIViewController {
             }
         }
         
+        setUpBindings()
         fetchData()
         
-        setUpBindings()
     }
     
     @IBAction func btnTapped(_ sender: Any) {
-        setUpBindings()
+        todoViewModel.startIndicator()
+    }
+    
+    @IBAction func updateVMBtnTapped(_ sender: Any) {
+        todoViewModel.updateViewModel()
     }
     
     @IBAction func triggerViewModelBtnTapped(_ sender: Any) {
-        todoViewModel.updateViewModel()
+        todoViewModel.endIndicator()
     }
     
     //  Listening datas and do something
@@ -53,21 +57,27 @@ class TodoViewController: UIViewController {
         
         todoViewModel.title.listen {
             self.headerLabel.text = $0
+            print("değer değişti \($0)")
         }
         
         todoViewModel.backgroundColor.listen { color in
             self.tableView.backgroundColor = color
-            self.triggerViewModelBtn.tintColor = color
+            self.updateVMBtn.tintColor = color
             self.view.backgroundColor = color
+        }
+        
+        let activityView = self.view.createSpinner()
+        
+        todoViewModel.isLoading.listen { val in
+            if val { activityView.startAnimating() }
+            else   { activityView.stopAnimating() }
         }
         
     }
     
     func fetchData (){
         NetworkClient.performRequest(vc: self, object: [Todo].self, router: APIRouter.getTodos, success : { result in
-            
             self.todoViewModel.todos.value = result
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -78,8 +88,8 @@ class TodoViewController: UIViewController {
         tableView.layer.shadowOpacity = 1
         tableView.layer.shadowOffset = .zero
         tableView.layer.shadowRadius = 10
-        tableView.layer.cornerRadius = 15
-        headerView.layer.cornerRadius = 15
+        tableView.layer.cornerRadius = 10
+        headerView.layer.cornerRadius = 10
     }
 }
 
@@ -88,7 +98,7 @@ extension TodoViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         cell.textLabel?.text = todoViewModel.todos.value?[indexPath.row].title
-        cell.textLabel?.font = UIFont(name: "Helvetica", size: 15)
+        cell.textLabel?.font = UIFont(name: "Helvetica", size: 18)
         cell.textLabel?.numberOfLines = 0
         return cell
     }
