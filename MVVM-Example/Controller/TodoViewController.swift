@@ -10,18 +10,23 @@ import UIKit
 class TodoViewController: UIViewController {
     
     @IBOutlet weak var headerView: UIView!
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var todoViewModel = TodoViewModel()
 
     @IBOutlet weak var triggerViewModelBtn: UIButton!
     
+    @IBOutlet weak var headerLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
             
         tableView.delegate = self
         tableView.dataSource = self
-                        
+        
+        setupTableView()
+        
         todoViewModel.todos.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -47,11 +52,7 @@ class TodoViewController: UIViewController {
         todoViewModel.title.bindTo(navigationController?.navigationBar.topItem, to: .title)
         
         todoViewModel.title.listen {
-            print("Title changed!: " + $0)
-        }
-        
-        todoViewModel.title.listen {
-            print("Title 1 changed!: " + $0)
+            self.headerLabel.text = $0
         }
         
         todoViewModel.backgroundColor.listen { color in
@@ -70,6 +71,15 @@ class TodoViewController: UIViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func setupTableView() {
+        tableView.layer.shadowColor = UIColor.black.cgColor
+        tableView.layer.shadowOpacity = 1
+        tableView.layer.shadowOffset = .zero
+        tableView.layer.shadowRadius = 10
+        tableView.layer.cornerRadius = 15
+        headerView.layer.cornerRadius = 15
     }
 }
 
