@@ -12,16 +12,9 @@ class TodoViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    var todoViewModel = TodoViewModel() {
-        didSet{
-            self.tableView.reloadData()
-            self.tableView.backgroundColor = todoViewModel.backgroundColor
-            self.headerView.backgroundColor = todoViewModel.backgroundColor
-            for item in todoViewModel.todos {
-                print(item.title)
-            }
-        }
-    }
+    private var todoViewModel = TodoViewModel()
+
+    @IBOutlet weak var triggerViewModelBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +22,52 @@ class TodoViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
                         
+        todoViewModel.todos.bind { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        
+        fetchData()
+        
+        setUpBindings()
     }
     
-    @IBAction func bindingTriggerTapped(_ sender: Any) {
-        setItems()
+    @IBAction func btnTapped(_ sender: Any) {
+        setUpBindings()
     }
     
-    func setItems(){
-        NetworkClient.performRequest(vc: self, object: [Todo].self, router: APIRouter.getTodos) { result in
-            self.todoViewModel.todos = result
-        } failure: { error in
+    @IBAction func triggerViewModelBtnTapped(_ sender: Any) {
+        todoViewModel.updateViewModel()
+    }
+    
+    //  Listening datas and do something
+    func setUpBindings(){
+        
+        todoViewModel.title.bindTo(navigationController?.navigationBar.topItem, to: .title)
+        
+        todoViewModel.title.listen {
+            print("Title changed!: " + $0)
+        }
+        
+        todoViewModel.title.listen {
+            print("Title 1 changed!: " + $0)
+        }
+        
+        todoViewModel.backgroundColor.listen { color in
+            self.tableView.backgroundColor = color
+            self.triggerViewModelBtn.tintColor = color
+            self.view.backgroundColor = color
+        }
+        
+    }
+    
+    func fetchData (){
+        NetworkClient.performRequest(vc: self, object: [Todo].self, router: APIRouter.getTodos, success : { result in
+            
+            self.todoViewModel.todos.value = result
+            
+        }) { (error) in
             print(error.localizedDescription)
         }
     }
@@ -47,15 +76,15 @@ class TodoViewController: UIViewController {
 extension TodoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
-        cell.textLabel?.text = todoViewModel.todos[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        cell.textLabel?.text = todoViewModel.todos.value?[indexPath.row].title
         cell.textLabel?.font = UIFont(name: "Helvetica", size: 15)
         cell.textLabel?.numberOfLines = 0
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoViewModel.todos.count
+        return todoViewModel.todos.value?.count ?? 0
     }
     
 }

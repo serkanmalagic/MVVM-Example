@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.4)
+  - EasyBinding (0.2.5)
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
@@ -8,6 +9,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
+  - EasyBinding
   - NVActivityIndicatorView
   - SCLAlertView
   - SwiftyJSON (~> 4.0)
@@ -15,16 +17,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - EasyBinding
     - NVActivityIndicatorView
     - SCLAlertView
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  EasyBinding: 61a98683f01b921c666f884ebcc26d23826a7003
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 7e18d24e287e40cd33f975f3b0777f52aa37da46
+PODFILE CHECKSUM: 3e58d2d409f3be3af58bbf3397acfa8446a80e4e
 
 COCOAPODS: 1.11.2

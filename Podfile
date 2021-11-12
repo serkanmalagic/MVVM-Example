@@ -10,4 +10,6 @@ target 'MVVM-Example' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'SCLAlertView'
   pod 'NVActivityIndicatorView'
+  pod 'EasyBinding'
+
 end
